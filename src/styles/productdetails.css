@@ -1,0 +1,126 @@
+.product-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 40px;
+  background: #fff;
+}
+
+.product-details-img img {
+  width: 400px;
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+.product-details-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.product-details-info h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.product-details-info .category {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 20px;
+}
+.old-price {
+  font-size: 1rem;
+  margin-left: 10px;
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Quantity Control */
+.quantity-control {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.quantity-control button {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: #f2f2f2;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+.quantity-control button:hover {
+  background: #ddd;
+}
+.quantity-control span {
+  margin: 0 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Add to Cart */
+.add-to-cart-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #000, #333);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.add-to-cart-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #333, #000);
+}
+
+/* Sections */
+.details-section {
+  margin-top: 30px;
+}
+.details-section h4 {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.details-section p {
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Reviews */
+.reviews-section {
+  margin-top: 40px;
+}
+.review-card {
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+.review-user {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.review-comment {
+  font-style: italic;
+  margin-bottom: 5px;
+}
+.review-rating {
+  color: #f39c12;
+  font-weight: 500;
+}

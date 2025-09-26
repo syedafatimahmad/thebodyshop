@@ -1,0 +1,25 @@
+/* Colors inspired by The Body Shop */
+:root {
+  --primary-color: #1a3c34; /* Deep green */
+  --secondary-color: #f5f5f0; /* Soft beige/white */
+  --accent-color: #c5a880; /* Warm gold/brown */
+  --text-color: #f5f5f5;
+  --font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+button {
+  border-radius: 6px;
+  font-weight: 500;
+}
