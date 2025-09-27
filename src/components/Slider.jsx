@@ -14,13 +14,13 @@ function Slider() {
       loop={true}
     >
       <SwiperSlide>
-        <img src="/thebodyshop/images/banner1.jpg" alt="Banner 1" />
+        <img src="/images/banner1.jpg" alt="Banner 1" />
       </SwiperSlide>
       <SwiperSlide>
-        <img src="/thebodyshop/images/banner2.jpg" alt="Banner 2" />
+        <img src="/images/banner2.jpg" alt="Banner 2" />
       </SwiperSlide>
       <SwiperSlide>
-        <img src="/thebodyshop/images/banner3.jpg" alt="Banner 3" />
+        <img src="/images/banner3.jpg" alt="Banner 3" />
       </SwiperSlide>
     </Swiper>
   );
