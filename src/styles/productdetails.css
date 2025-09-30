@@ -6,6 +6,7 @@
   background: #fff;
 }
 
+/* image */
 .product-details-img img {
   width: 400px;
   max-width: 100%;
@@ -14,6 +15,7 @@
   object-fit: cover;
 }
 
+/* info column */
 .product-details-info {
   flex: 1;
   min-width: 280px;
@@ -44,13 +46,13 @@
   color: #888;
 }
 
-/* Quantity Control */
+/* Quantity Control - scoped to qty buttons only */
 .quantity-control {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
-.quantity-control button {
+.quantity-control .qty-btn {
   width: 36px;
   height: 36px;
   border: none;
@@ -61,10 +63,10 @@
   border-radius: 8px;
   transition: background 0.2s ease;
 }
-.quantity-control button:hover {
+.quantity-control .qty-btn:hover {
   background: #ddd;
 }
-.quantity-control span {
+.quantity-control .qty-value {
   margin: 0 12px;
   font-size: 1.1rem;
   font-weight: 500;
@@ -76,8 +78,8 @@
   padding: 12px 24px;
   font-size: 1rem;
   font-weight: 600;
-  background: linear-gradient(135deg, #000, #333);
-  color: #fff;
+  background: linear-gradient(135deg, #222, #444);
+  color: #ffffff;               /* <- was #000 which hid the text */
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -85,7 +87,7 @@
 }
 .add-to-cart-btn:hover {
   transform: translateY(-2px);
-  background: linear-gradient(135deg, #333, #000);
+  background: linear-gradient(135deg, #444, #222);
 }
 
 /* Sections */
@@ -123,4 +125,45 @@
 .review-rating {
   color: #f39c12;
   font-weight: 500;
+}
+
+/* Product card container */
+.product-details-card {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.3s ease-in-out;
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Review form styling */
+.review-form {
+  margin-top: 12px;
+}
+.review-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.review-form input,
+.review-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  font-size: 1rem;
+  margin-top: 6px;
+  box-sizing: border-box;
+}
+.review-form .add-to-cart-btn {
+  margin-top: 8px;
 }
