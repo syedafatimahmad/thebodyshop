@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Row, Col, Button, Card, Form } from "react-bootstrap";
 import { useCart } from "../context/CartContext";
 import products from "../data/products";
+import "../styles/productdetails.css";
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const product = products.find((p) => p.id === parseInt(id));
+  const product = products.find((p) => p.id === parseInt(id, 10));
   const { addToCart, cartItems, increaseQuantity, decreaseQuantity } = useCart();
 
   if (!product) return <h2 className="text-center mt-5">Product not found</h2>;
@@ -24,115 +24,115 @@ export default function ProductDetails() {
 
   const handleAddReview = (e) => {
     e.preventDefault();
-    if (reviewName && reviewComment) {
-      setReviews([...reviews, { name: reviewName, comment: reviewComment }]);
-      setReviewName("");
-      setReviewComment("");
-    }
+    const name = reviewName.trim();
+    const comment = reviewComment.trim();
+    if (!name || !comment) return;
+    setReviews((prev) => [...prev, { name, comment }]);
+    setReviewName("");
+    setReviewComment("");
+  };
+
+  const handleAddToCart = () => {
+    // Most contexts accept a product object — keep what worked for your cart.
+    // If your CartContext expects an id, change to addToCart(product.id)
+    addToCart({ ...product, quantity: 1 });
   };
 
   return (
-    <Container className="my-5">
-      <Row className="g-5">
+    <div className="product-details-card">
+      <div className="product-details">
         {/* Product Image */}
-        <Col md={6} className="d-flex justify-content-center">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="img-fluid rounded shadow"
-            style={{ maxHeight: "450px", objectFit: "cover" }}
-          />
-        </Col>
+        <div className="product-details-img">
+          <img src={product.image} alt={product.name} />
+        </div>
 
-        {/* Product Details */}
-        <Col md={6}>
-          <h2 className="fw-bold">{product.name}</h2>
-          <p className="text-muted">
-            {product.description || "No description available."}
-          </p>
-          <h4 className="text-success fw-bold">Rs {product.price}</h4>
+        {/* Product Info */}
+        <div className="product-details-info">
+          <h2>{product.name}</h2>
+          <p className="category">{product.description || "No description available."}</p>
+          <div className="price">Rs {product.price}</div>
           <p>
-            <strong>Key Ingredients:</strong>{" "}
-            {product.ingredients || "Not specified"}
+            <strong>Key Ingredients:</strong> {product.ingredients || "Not specified"}
           </p>
 
-          {/* Add to Cart Button */}
-          <Button
-            variant="primary"
-            className="me-3 mb-2"
-            onClick={() => addToCart({ ...product, quantity: 1 })}
-          >
-            Add to Cart
-          </Button>
+          {/* Quantity & Cart Controls */}
+          <div className="quantity-control">
+            {quantity > 0 && (
+              <>
+                <button
+                  type="button"
+                  className="qty-btn"
+                  onClick={() => decreaseQuantity(product.id)}
+                >
+                  −
+                </button>
+                <span className="qty-value">{quantity}</span>
+                <button
+                  type="button"
+                  className="qty-btn"
+                  onClick={() => increaseQuantity(product.id)}
+                >
+                  +
+                </button>
+              </>
+            )}
+          </div>
 
-          {/* Quantity Counter (only shows if in cart) */}
-          {quantity > 0 && (
-            <div className="d-inline-flex align-items-center">
-              <Button
-                variant="outline-danger"
-                size="sm"
-                onClick={() => decreaseQuantity(product.id)}
-              >
-                −
-              </Button>
-              <span className="mx-2 fw-bold">{quantity}</span>
-              <Button
-                variant="outline-success"
-                size="sm"
+          {/* Place Add to Cart outside quantity-control so it's not affected by qty styling */}
+          {quantity === 0 ? (
+            <button className="add-to-cart-btn" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
+          ) : (
+            <div style={{ marginTop: 8 }}>
+              <button
+                type="button"
+                className="add-to-cart-btn"
                 onClick={() => increaseQuantity(product.id)}
               >
-                +
-              </Button>
+                Add one more
+              </button>
             </div>
           )}
-        </Col>
-      </Row>
+        </div>
+      </div>
 
       {/* Reviews Section */}
-      <Row className="mt-5">
-        <Col md={8} className="mx-auto">
-          <h3 className="mb-4 text-center">Customer Reviews</h3>
+      <div className="reviews-section">
+        <h3>Customer Reviews</h3>
 
-          {reviews.map((rev, index) => (
-            <Card key={index} className="mb-3 shadow-sm border-0">
-              <Card.Body>
-                <Card.Title className="fw-bold">{rev.name}</Card.Title>
-                <Card.Text>"{rev.comment}"</Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
+        {reviews.map((rev, index) => (
+          <div key={index} className="review-card">
+            <div className="review-user">{rev.name}</div>
+            <div className="review-comment">"{rev.comment}"</div>
+          </div>
+        ))}
 
-          <Card className="mt-4 shadow-sm border-0">
-            <Card.Body>
-              <h5 className="mb-3">Leave a Review</h5>
-              <Form onSubmit={handleAddReview}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Your Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    value={reviewName}
-                    onChange={(e) => setReviewName(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Your Review</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    value={reviewComment}
-                    onChange={(e) => setReviewComment(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-                <Button type="submit" variant="success">
-                  Submit Review
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+        {/* Review Form */}
+        <form className="review-form" onSubmit={handleAddReview}>
+          <label>
+            Your Name
+            <input
+              type="text"
+              value={reviewName}
+              onChange={(e) => setReviewName(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            Your Review
+            <textarea
+              rows={3}
+              value={reviewComment}
+              onChange={(e) => setReviewComment(e.target.value)}
+              required
+            />
+          </label>
+          <button type="submit" className="add-to-cart-btn">
+            Submit Review
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
