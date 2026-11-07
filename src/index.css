@@ -1,15 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Montserrat', sans-serif;
+  color: #253b2b;
+  background: #f5f0e6;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: #f8f9fa; /* light grey background like The Body Shop */
-  font-family: 'Arial', sans-serif;
   margin: 0;
-  padding: 0;
+  min-width: 320px;
+  background: rgba(245, 240, 230, 0.82);
 }
 
-main {
-  padding-top: 80px; /* leave space for sticky navbar if needed */
-}
-
-h2 {
-  font-weight: 600;
-  margin-bottom: 1rem;
+h1,
+h2,
+h3 {
+  font-family: 'Libre Baskerville', serif;
 }
