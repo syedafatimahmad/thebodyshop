@@ -252,3 +252,201 @@ section {
   .hero-content p { font-size: 0.9rem; }
   .section-header h2 { font-size: 1.5rem; }
 }
+
+/* Editorial Body Shop finish */
+.home {
+  position: relative;
+  isolation: isolate;
+  background: #f7f4ec;
+}
+
+.home > section:not(.hero) {
+  position: relative;
+  z-index: 1;
+  background: #f7f4ec;
+}
+
+.hero {
+  width: 100%;
+  min-height: min(760px, calc(100vh - 92px));
+  border-bottom: 0;
+  background: #173d2c;
+}
+
+.hero-video,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-video {
+  z-index: 0;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(12, 38, 27, .78) 0%, rgba(12, 38, 27, .42) 48%, rgba(12, 38, 27, .08) 100%);
+}
+
+.hero .swiper,
+.hero .swiper-wrapper,
+.hero .swiper-slide {
+  height: 100%;
+}
+
+.hero-slide {
+  height: 100%;
+  min-height: min(760px, calc(100vh - 92px));
+  background: transparent;
+}
+
+.hero-slide img {
+  display: none;
+}
+
+.hero-slide::after {
+  display: none;
+}
+
+.hero-content {
+  left: clamp(1.5rem, 9vw, 9rem);
+  max-width: 590px;
+  padding: 1rem 0;
+}
+
+.hero-content::before {
+  content: "NATURE-INSPIRED SKINCARE";
+  display: block;
+  margin-bottom: 1.2rem;
+  color: #d7e7cf;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+}
+
+.hero-content h1 {
+  max-width: 620px;
+  margin: 0 0 1.25rem;
+  color: #fffdf6;
+  font-size: clamp(2.65rem, 6vw, 5.6rem);
+  line-height: 1.06;
+  letter-spacing: -.04em;
+}
+
+.hero-content p {
+  max-width: 430px;
+  margin: 0 0 2rem;
+  color: #f1f4e8;
+  font-size: clamp(1rem, 1.6vw, 1.22rem);
+  line-height: 1.7;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: .85rem 1.8rem;
+  border-radius: 0;
+  background: #d9e8c9;
+  color: #173d2c;
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.hero-btn:hover {
+  background: #fffdf6;
+  color: #173d2c;
+  transform: translateY(-2px);
+}
+
+.product-section {
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.section-header {
+  margin-bottom: 2rem;
+  padding: 0;
+  border-bottom: 1px solid #d8dfd2;
+  padding-bottom: 1rem;
+}
+
+.section-header h2 {
+  color: #173d2c;
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+  letter-spacing: -.025em;
+}
+
+.section-header a {
+  color: #3e684c;
+  font-size: .76rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.product-card {
+  border: 1px solid #e0e5dc;
+  border-radius: 0;
+  background: #fffdf8;
+  box-shadow: none;
+  padding: 0 0 1.25rem;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  box-shadow: 0 12px 28px rgba(23, 61, 44, .1);
+  transform: translateY(-3px);
+}
+
+.product-card img {
+  border-radius: 0;
+  margin-bottom: 1rem;
+  background: #edf1e8;
+}
+
+.product-name,
+.product-title {
+  color: #173d2c;
+  font-size: .98rem;
+  font-weight: 600;
+}
+
+.product-price,
+.product-discount {
+  color: #7b4a29;
+}
+
+.add-to-cart-btn {
+  margin: .75rem 1rem 0;
+  min-height: 42px;
+  border: 1px solid #173d2c;
+  border-radius: 0;
+  background: transparent;
+  color: #173d2c;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.add-to-cart-btn:hover {
+  background: #173d2c;
+  color: #fffdf8;
+}
+
+.video-background { display: none; }
+
+@media (max-width: 768px) {
+  .hero,
+  .hero-slide { min-height: 72vh; }
+  .hero-overlay { background: linear-gradient(90deg, rgba(12, 38, 27, .75), rgba(12, 38, 27, .24)); }
+  .hero-content { left: 1.5rem; right: 1.5rem; }
+  .hero-content h1 { font-size: clamp(2.35rem, 11vw, 4rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video { display: none; }
+}

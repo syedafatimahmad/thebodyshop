@@ -11,14 +11,6 @@ import Checkout from "./pages/checkout";
 function App() {
   return (
     <>
-      
-      {/* Background Video */}
-      <div className="video-background">
-        <video autoPlay muted loop playsInline>
-          <source src="/video/background.mp4" type="video/mp4" />
-        </video>
-      </div>
-
       <Header />
       <main>
         <Routes>
