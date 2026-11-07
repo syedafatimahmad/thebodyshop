@@ -1,7 +1,7 @@
 // CartSidebar.jsx
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
-import "../styles/cartSidebar.css"; // create a CSS file for styling
+import "../styles/CartSidebar.css";
 
 export default function CartSidebar({ isOpen, onClose }) {
   const { cartItems, updateQuantity, removeFromCart } = useCart();
