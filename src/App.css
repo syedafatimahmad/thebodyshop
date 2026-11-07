@@ -1,9 +1,14 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
 }
+
+main,
+header,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
 
 .logo {
   height: 6em;
