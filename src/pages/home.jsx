@@ -18,7 +18,11 @@ function Home() {
   return (
     <div className="home">
       {/* HERO SECTION */}
-      <section className="hero">
+      <section className="hero" aria-label="Featured collections">
+        <video className="hero-video" autoPlay muted loop playsInline poster="/images/banner1.jpg" aria-hidden="true">
+          <source src="/video/background.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-overlay" aria-hidden="true" />
         <Swiper
           modules={[Navigation, Autoplay, Pagination]}
           navigation
