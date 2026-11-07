@@ -9,11 +9,6 @@ export default function ProductDetails() {
   const product = products.find((p) => p.id === parseInt(id, 10));
   const { addToCart, cartItems, increaseQuantity, decreaseQuantity } = useCart();
 
-  if (!product) return <h2 className="text-center mt-5">Product not found</h2>;
-
-  const cartItem = cartItems.find((item) => item.id === product.id);
-  const quantity = cartItem ? cartItem.quantity : 0;
-
   // Reviews
   const [reviews, setReviews] = useState([
     { name: "guest678", comment: "Loved the texture, my skin feels amazing!" },
@@ -21,6 +16,11 @@ export default function ProductDetails() {
   ]);
   const [reviewName, setReviewName] = useState("");
   const [reviewComment, setReviewComment] = useState("");
+
+  if (!product) return <h2 className="text-center mt-5">Product not found</h2>;
+
+  const cartItem = cartItems.find((item) => item.id === product.id);
+  const quantity = cartItem ? cartItem.quantity : 0;
 
   const handleAddReview = (e) => {
     e.preventDefault();

@@ -4,7 +4,7 @@ import { useCart } from "../context/CartContext";
 import "../styles/header.css";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import CartSidebar from "../components/cartsidebar";
+import CartSidebar from "./CartSidebar";
 
 function Header() {
   const { cartItems } = useCart();
